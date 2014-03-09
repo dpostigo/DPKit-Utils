@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DPKit-Utils"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "DPKit-Utils"
   s.homepage     = "http://dpostigo.com"
   s.license      = 'BSD'
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '4.3'
   s.ios.source_files = 'DPKit-Utils/ios/**/*.{h,m}'
 
-  s.osx.deployment_target = '10.8'
+  s.osx.deployment_target = '10.7'
   s.osx.source_files = 'DPKit-Utils/osx/**/*.{h,m}'
 
 
