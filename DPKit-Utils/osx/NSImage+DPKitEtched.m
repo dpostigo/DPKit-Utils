@@ -2,7 +2,7 @@
 // Created by Dani Postigo on 2/12/14.
 //
 
-#import <DPKit/NSShadow+DPKit.h>
+#import "NSShadow+DPKit.h"
 #import "NSImage+DPKitEtched.h"
 
 @implementation NSImage (DPKitEtched)

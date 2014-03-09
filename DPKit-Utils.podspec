@@ -6,12 +6,17 @@ Pod::Spec.new do |s|
   s.license      = 'BSD'
   s.author       = { "Dani Postigo" => "dani@firstperson.is" }
   s.source       = { :git => "https://github.com/dpostigo/DPKit-Utils.git", :tag => s.version.to_s }
-  s.platform     = :osx, '10.8'
   s.requires_arc = true
+
   s.source_files = 'DPKit-Utils/*.{h,m}'
 
   s.ios.deployment_target = '4.3'
-  s.osx.deployment_target = '10.7'
+  s.ios.source_files = 'DPKit-Utils/ios/**/*.{h,m}'
+  
+  s.osx.deployment_target = '10.8'
+  s.osx.source_files = 'DPKit-Utils/osx/**/*.{h,m}'
+
+
 
   s.dependency  'JMSimpleDate'
 
