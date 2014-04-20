@@ -6,7 +6,13 @@
 
 @interface NSWindow (DPKit)
 
+- (void) centerOnScreen;
+- (void) centerOnScreen: (BOOL) animated;
+- (void) centerHorizontallyOnScreen: (BOOL) animated;
+- (NSRect) centeredRectOnScreen;
 - (NSView *) windowThemeFrame;
 - (NSView *) contentAsView;
 - (NSRect) bounds;
+- (void) recursivelyExecuteBlock: (void (^)(NSWindow *)) viewBlock;
+- (void) closeChildWindows;
 @end

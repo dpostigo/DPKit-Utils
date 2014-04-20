@@ -6,8 +6,14 @@
 
 @implementation NSView (DPKit)
 
-- (void) recursiveWantsLayer {
+- (void) removeAllSubviews {
+    NSArray *subviews = [NSArray arrayWithArray: self.subviews];
+    for (NSView *subview in subviews) {
+        [subview removeFromSuperview];
+    }
+}
 
+- (void) recursiveWantsLayer {
     NSView *superview = self.superview;
     while (superview) {
         superview.wantsLayer = YES;
@@ -15,27 +21,27 @@
         superview = superview.superview;
     }
 }
-
-- (instancetype) loadFromNib {
-    return [[self class] loadFromNib];
-}
-
-
-- (instancetype) loadFromNib: (NSString *) nibName {
-    return [[self class] loadFromNib: nibName];
-}
-
-
-- (instancetype) loadFromNib: (NSString *) nibName owner: (id) owner {
-    return [[self class] loadFromNib: nibName];
-}
+//
+//- (instancetype) loadFromNib {
+//    return [[self class] loadFromNib];
+//}
+//
+//
+//- (instancetype) loadFromNib: (NSString *) nibName {
+//    return [[self class] loadFromNib: nibName];
+//}
+//
+//
+//- (instancetype) loadFromNib: (NSString *) nibName owner: (id) owner {
+//    return [[self class] loadFromNib: nibName];
+//}
 
 + (instancetype) loadFromNib {
-    return [self loadFromNib: [self className]];
+    return [NSView loadFromNib: [self className]];
 }
 
 + (instancetype) loadFromNib: (NSString *) nibName {
-    return [[self class] loadFromNib: nibName owner: nil];
+    return [NSView loadFromNib: nibName owner: nil];
 }
 
 + (instancetype) loadFromNib: (NSString *) nibName owner: (id) owner {
@@ -52,6 +58,12 @@
                 break;
             }
         }
+    } else {
+        NSLog(@"no success.");
+    }
+
+    if (ret == nil) {
+        NSLog(@"ret = %@", ret);
     }
 
     return ret;

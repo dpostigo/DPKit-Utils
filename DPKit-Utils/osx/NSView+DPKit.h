@@ -9,10 +9,15 @@
 
 + (instancetype) loadFromNib;
 + (instancetype) loadFromNib: (NSString *) nibName;
-- (void) recursiveWantsLayer;
-- (instancetype) loadFromNib;
-- (instancetype) loadFromNib: (NSString *) nibName;
-- (instancetype) loadFromNib: (NSString *) nibName owner: (id) owner;
+
+
++ (instancetype) loadFromNib: (NSString *) nibName owner: (id) owner;
 - (NSView *) viewWithIdentifier: (NSString *) identifier;
+- (void) removeAllSubviews;
+- (void) recursiveWantsLayer;
 - (void) recursivelyExecuteBlock: (void (^)(NSView *)) viewBlock;
+//
+//- (instancetype) loadFromNib;
+//- (instancetype) loadFromNib: (NSString *) nibName;
+//- (instancetype) loadFromNib: (NSString *) nibName owner: (id) owner;
 @end
