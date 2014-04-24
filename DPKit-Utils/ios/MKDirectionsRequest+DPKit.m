@@ -7,7 +7,7 @@
 @implementation MKDirectionsRequest (DPKit)
 
 + (MKDirectionsRequest *) requestWithSource: (MKMapItem *) source destination: (MKMapItem *) destination {
-    return [MKDirectionsRequest requestWithSource: source destination: destination transportType: MKDirectionsTransportTypeWalking];
+    return [MKDirectionsRequest requestWithSource: source destination: destination transportType: MKDirectionsTransportTypeAutomobile];
 }
 
 + (MKDirectionsRequest *) requestWithSource: (MKMapItem *) source destination: (MKMapItem *) destination transportType: (MKDirectionsTransportType) transportType {
