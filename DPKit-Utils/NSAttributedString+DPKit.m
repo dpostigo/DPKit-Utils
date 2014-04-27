@@ -6,6 +6,8 @@
 
 @implementation NSAttributedString (DPKit)
 
+
+
 - (NSRange) range {
     return NSMakeRange(0, self.string.length);
 }
