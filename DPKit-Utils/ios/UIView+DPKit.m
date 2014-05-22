@@ -8,6 +8,12 @@
 
 @implementation UIView (DPKit)
 
++ (UIView *) viewWithColor: (UIColor *) color {
+    UIView *ret = [[UIView alloc] init];
+    ret.backgroundColor = color;
+    return ret;
+}
+
 - (void) prettify {
     [self prettifyWithBackgroundColor: [UIColor colorWithWhite: 0.98 alpha: 1.0] borderColor: [UIColor whiteColor] shadowColor: [UIColor blackColor]];
 }
@@ -42,8 +48,8 @@
 
 
 - (void) rasterize {
-    self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
     self.layer.shouldRasterize = YES;
+    self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
 }
 
 

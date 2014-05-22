@@ -5,4 +5,7 @@
 #import <Foundation/Foundation.h>
 
 @interface UITextField (DPKit)
+
+@property(nonatomic) CGFloat leftPadding;
+
 @end
