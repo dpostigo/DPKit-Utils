@@ -8,5 +8,7 @@
 
 - (id) firstObject;
 - (NSArray *) objectsOfType: (Class) class;
+- (NSArray *) classes;
+- (BOOL) containsClass: (Class) class;
 - (NSArray *) sortedArrayUsingDescriptor: (NSSortDescriptor *) descriptor;
 @end

@@ -34,6 +34,16 @@
     return ret;
 }
 
+- (NSArray *) classes {
+    return [self valueForKeyPath: @"@unionOfObjects.class"];
+}
+
+- (BOOL) containsClass: (Class) class {
+    NSArray *classes = self.classes;
+    return [classes containsObject: class];
+
+}
+
 
 - (NSArray *) sortedArrayUsingDescriptor: (NSSortDescriptor *) descriptor {
     return [self sortedArrayUsingDescriptors: [NSArray arrayWithObject: descriptor]];
