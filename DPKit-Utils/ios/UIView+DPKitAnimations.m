@@ -8,7 +8,6 @@
 @implementation UIView (DPKitAnimations)
 
 - (void) fadeIn: (CGFloat) alphaIn withDuration: (CGFloat) durationIn toAlpha: (CGFloat) alphaOut withDuration: (CGFloat) durationOut {
-
     void (^animateIn) () = ^{
         self.alpha = alphaIn;
     };
@@ -33,8 +32,6 @@
 }
 
 - (void) animateIn: (void (^)()) animationIn withDuration: (CGFloat) durationIn animationOut: (void (^)()) animationOut withDuration: (CGFloat) durationOut options: (UIViewAnimationOptions) options {
-
-
     [UIView animateWithDuration: durationIn
                           delay: 0.0
                         options: options

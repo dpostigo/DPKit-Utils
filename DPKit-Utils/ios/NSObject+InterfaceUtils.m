@@ -7,46 +7,46 @@
 
 @implementation NSObject (InterfaceUtils)
 
-- (UIInterfaceOrientation) statusOrientation {
+- (UIInterfaceOrientation)statusOrientation {
     return [[UIApplication sharedApplication] statusBarOrientation];
 }
 
-- (NSString *) stringForInterfaceOrientation: (UIInterfaceOrientation) orientation {
-    return [UIApplication interfaceOrientationAsString: orientation];
+- (NSString *)stringForInterfaceOrientation:(UIInterfaceOrientation)orientation {
+    return [UIApplication interfaceOrientationAsString:orientation];
 
 }
 
 
-- (NSString *) statusOrientationAsString {
-    return [UIApplication interfaceOrientationAsString: self.statusOrientation];
+- (NSString *)statusOrientationAsString {
+    return [UIApplication interfaceOrientationAsString:self.statusOrientation];
 }
 
-- (BOOL) isLandscapeLeft {
+- (BOOL)isLandscapeLeft {
     return self.statusOrientation == UIInterfaceOrientationLandscapeLeft;
 }
 
 
-- (BOOL) isLandscapeRight {
+- (BOOL)isLandscapeRight {
     return self.statusOrientation == UIInterfaceOrientationLandscapeRight;
 }
 
 
-- (BOOL) isLandscape {
+- (BOOL)isLandscape {
     return UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]);
 }
 
 
 #pragma mark Device orientation
 
-- (UIDeviceOrientation) deviceOrientation {
+- (UIDeviceOrientation)deviceOrientation {
     return [UIDevice currentDevice].orientation;
 }
 
-- (NSString *) deviceOrientationAsString {
-    return [self stringForDeviceOrientation: [UIDevice currentDevice].orientation];
+- (NSString *)deviceOrientationAsString {
+    return [self stringForDeviceOrientation:[UIDevice currentDevice].orientation];
 }
 
-- (NSString *) stringForDeviceOrientation: (UIDeviceOrientation) orientation {
+- (NSString *)stringForDeviceOrientation:(UIDeviceOrientation)orientation {
 
     NSString *ret = nil;
     if (orientation == UIDeviceOrientationUnknown) {

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DPKit-Utils"
-  s.version      = "0.0.15"
+  s.version      = "0.0.16"
   s.summary      = "DPKit-Utils"
   s.homepage     = "http://dpostigo.com"
   s.license      = 'BSD'
@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
 
 
   s.dependency  'JMSimpleDate'
+  s.frameworks   = 'Foundation', 'QuartzCore', 'UIKit', 'CoreGraphics'
 
 
 
