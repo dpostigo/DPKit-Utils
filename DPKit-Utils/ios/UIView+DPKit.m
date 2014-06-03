@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <DPKit-Utils/UIView+DPKit.h>
+
 @implementation UIView (DPKit)
 
 + (UIView *) viewWithColor: (UIColor *) color {
@@ -255,6 +257,43 @@
     while (self.subviews.count) {
         UIView *child = self.subviews.lastObject;
         [child removeFromSuperview];
+    }
+}
+
+
+- (void) positionAtEdge: (UIRectEdge) edge {
+    [self positionAtEdge: edge hidden: NO];
+}
+
+
+- (void) positionAtEdge: (UIRectEdge) edge hidden: (BOOL) flag {
+
+    UIView *superview = self.superview;
+
+    switch (edge) {
+        case UIRectEdgeLeft :
+            self.left = flag ? -self.width : 0;
+            self.centerY = superview.centerY;
+            break;
+
+        case UIRectEdgeRight :
+            self.left = flag ? superview.width : superview.width - self.width;
+            self.centerY = superview.centerY;
+            break;
+
+        case UIRectEdgeTop :
+            self.top = flag ? -self.height : 0;
+            self.centerX = superview.centerX;
+            break;
+
+        case UIRectEdgeBottom :
+            self.top = flag ? superview.height : superview.height - self.height;
+            self.centerX = superview.centerX;
+            break;
+
+        default :
+            break;
+
     }
 }
 

@@ -22,7 +22,7 @@
 
 - (void) setFlowLayoutSize: (CGSize) size {
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
-    flowLayout.itemSize = size;
+    flowLayout.itemSize = CGSizeMake(size.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right, size.height - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom);
     self.collectionViewLayout = flowLayout;
 }
 

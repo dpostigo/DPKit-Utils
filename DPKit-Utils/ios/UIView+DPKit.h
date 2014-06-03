@@ -41,4 +41,6 @@
 - (void) setRoundedView: (UIImageView *) roundedView toDiameter: (float) newSize;
 - (void) removeAllSubviews;
 
+- (void) positionAtEdge: (UIRectEdge) edge;
+- (void) positionAtEdge: (UIRectEdge) edge hidden: (BOOL) flag;
 @end
