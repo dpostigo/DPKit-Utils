@@ -3,11 +3,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NSMutableAttributedString (DPKit)
 
 - (void)addAttribute:(NSString *)name value:(id)value;
-
+- (UIFont *)fontValue;
 @property(nonatomic) CGFloat kerning;
 
 

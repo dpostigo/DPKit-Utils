@@ -28,6 +28,6 @@
 }
 
 - (UIFont *)fontValue {
-    return [self attribute:NSFontAttributeName atIndex:0 effectiveRange:NULL];
+    return (UIFont *) [self attribute:NSFontAttributeName atIndex:0 effectiveRange:NULL];
 }
 @end
