@@ -6,5 +6,5 @@
 
 @interface UIFont (DPKit)
 
-+ (void) printFontNames;
++ (void)printFontNames;
 @end

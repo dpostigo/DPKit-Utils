@@ -17,6 +17,8 @@
     ret.minimumInteritemSpacing = currentLayout.minimumInteritemSpacing;
     ret.minimumLineSpacing = currentLayout.minimumLineSpacing;
     ret.scrollDirection = currentLayout.scrollDirection;
+    ret.footerReferenceSize = currentLayout.footerReferenceSize;
+    ret.headerReferenceSize = currentLayout.headerReferenceSize;
     return ret;
 }
 

@@ -6,5 +6,9 @@
 
 @interface NSMutableAttributedString (DPKit)
 
-- (void) addAttribute: (NSString *) name value: (id) value;
+- (void)addAttribute:(NSString *)name value:(id)value;
+
+@property(nonatomic) CGFloat kerning;
+
+
 @end
