@@ -273,22 +273,22 @@
     switch (edge) {
         case UIRectEdgeLeft :
             self.left = flag ? -self.width : 0;
-            self.centerY = superview.centerY;
+            self.centerY = superview.height / 2;
             break;
 
         case UIRectEdgeRight :
             self.left = flag ? superview.width : superview.width - self.width;
-            self.centerY = superview.centerY;
+            self.centerY = superview.height / 2;
             break;
 
         case UIRectEdgeTop :
             self.top = flag ? -self.height : 0;
-            self.centerX = superview.centerX;
+            self.centerX = superview.width / 2;
             break;
 
         case UIRectEdgeBottom :
             self.top = flag ? superview.height : superview.height - self.height;
-            self.centerX = superview.centerX;
+            self.centerX = superview.width / 2;
             break;
 
         default :

@@ -17,5 +17,8 @@
 }
 
 
++ (CGFloat)kerningValueForSize:(CGFloat)pointSize {
+    return 60 * (pointSize / 1000);;
+}
 
 @end
