@@ -6,4 +6,5 @@
 
 @interface UIViewController (DPKit)
 - (void (^)())constraintAnimationBlock;
+- (void)registerKeyboardWillShow:(SEL)selector;
 @end

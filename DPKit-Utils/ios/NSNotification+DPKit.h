@@ -6,4 +6,5 @@
 
 @interface NSNotification (DPKit)
 - (CGFloat)keyboardHeight;
+- (NSTimeInterval)keyboardDuration;
 @end

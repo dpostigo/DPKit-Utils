@@ -14,4 +14,9 @@
 }
 
 
+- (void)registerKeyboardWillShow:(SEL)selector {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:selector name:UIKeyboardWillShowNotification object:nil];
+}
+
+
 @end
