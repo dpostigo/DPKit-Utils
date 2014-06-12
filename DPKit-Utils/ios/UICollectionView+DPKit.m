@@ -9,7 +9,49 @@
 @implementation UICollectionView (DPKit)
 
 
-- (UICollectionViewFlowLayout *) flowLayoutCopy {
+- (void)reloadDataSelectingIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath) {
+        [self performBatchUpdates:^{
+            [self reloadItemsAtIndexPaths:[self indexPathsForVisibleItems]];
+        }              completion:^(BOOL finished) {
+
+
+            [self selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+                [[self delegate] collectionView:self didSelectItemAtIndexPath:indexPath];
+            }
+        }];
+    } else {
+        [self reloadData];
+
+    }
+}
+
+
+- (void)reloadDataSelectingIndexPaths:(NSArray *)indexPaths {
+    if (indexPaths && [indexPaths count] > 0) {
+        [self performBatchUpdates:^{
+
+            [self reloadItemsAtIndexPaths:[self indexPathsForVisibleItems]];
+
+        }              completion:^(BOOL finished) {
+
+            for (int j = 0; j < [indexPaths count]; j++) {
+                NSIndexPath *indexPath = indexPaths[j];
+                if (j == 0) {
+
+                    [self selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+                }
+            }
+
+        }];
+    } else {
+        [self reloadData];
+    }
+}
+
+
+- (UICollectionViewFlowLayout *)flowLayoutCopy {
     UICollectionViewFlowLayout *currentLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     UICollectionViewFlowLayout *ret = [[UICollectionViewFlowLayout alloc] init];
     ret.itemSize = currentLayout.itemSize;
@@ -22,37 +64,37 @@
     return ret;
 }
 
-- (void) setFlowLayoutSize: (CGSize) size {
+- (void)setFlowLayoutSize:(CGSize)size {
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(size.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right, size.height - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom);
     self.collectionViewLayout = flowLayout;
 }
 
-- (CGSize) flowLayoutSize {
+- (CGSize)flowLayoutSize {
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     return flowLayout.itemSize;
 }
 
 
-- (void) setFlowLayoutHeight: (CGFloat) aHeight {
+- (void)setFlowLayoutHeight:(CGFloat)aHeight {
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(flowLayout.itemSize.width, aHeight - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom);
     self.collectionViewLayout = flowLayout;
 }
 
-- (CGFloat) flowLayoutHeight {
+- (CGFloat)flowLayoutHeight {
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     return flowLayout.itemSize.height;
 }
 
 
-- (void) setFlowLayoutWidth: (CGFloat) width {
+- (void)setFlowLayoutWidth:(CGFloat)width {
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(width - flowLayout.sectionInset.left - flowLayout.sectionInset.right, flowLayout.itemSize.height);
     self.collectionViewLayout = flowLayout;
 }
 
-- (CGFloat) flowLayoutWidth {
+- (CGFloat)flowLayoutWidth {
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     return flowLayout.itemSize.width;
 }
