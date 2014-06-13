@@ -9,6 +9,11 @@
 @implementation UICollectionView (DPKit)
 
 
+- (NSIndexPath *)selectedIndexPath {
+    NSArray *indexPaths = [self indexPathsForSelectedItems];
+    return [indexPaths count] == 1 ? indexPaths[0] : nil;
+}
+
 - (void)reloadDataSelectingIndexPath:(NSIndexPath *)indexPath {
     if (indexPath) {
         [self performBatchUpdates:^{
