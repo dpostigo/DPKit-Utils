@@ -17,11 +17,16 @@
 
 - (NSArray *)cellsForItemsAtIndexPaths:(NSArray *)indexPaths {
     NSMutableArray *ret = [[NSMutableArray alloc] init];
-    for (NSIndexPath *indexPath in indexPaths) {
-        UICollectionViewCell *cell = [self cellForItemAtIndexPath:indexPath];
-        if (cell) {
-            [ret addObject:cell];
+    NSArray *paths = [NSArray arrayWithArray:indexPaths];
+    for (NSIndexPath *indexPath in paths) {
+        NSLog(@"indexPath = %@", indexPath);
+        if (indexPath) {
+            UICollectionViewCell *cell = [self cellForItemAtIndexPath:indexPath];
+            if (cell != nil) {
+                [ret addObject:cell];
+            }
         }
+
     }
 
     return ret;

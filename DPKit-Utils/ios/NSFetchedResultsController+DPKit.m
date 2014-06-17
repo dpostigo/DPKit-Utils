@@ -13,7 +13,7 @@
     for (int j = 0; j < [objects count]; j++) {
         id object = objects[j];
         NSIndexPath *indexPath = [self indexPathForObject:object];
-        if (indexPath) {
+        if (indexPath != nil) {
             [ret addObject:indexPath];
         }
     }
