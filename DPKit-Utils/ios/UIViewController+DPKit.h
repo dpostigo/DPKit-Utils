@@ -7,4 +7,5 @@
 @interface UIViewController (DPKit)
 - (void (^)())constraintAnimationBlock;
 - (void)registerKeyboardWillShow:(SEL)selector;
+- (void) embedFullscreenController: (UIViewController *) controller;
 @end

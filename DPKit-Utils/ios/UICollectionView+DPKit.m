@@ -9,6 +9,22 @@
 @implementation UICollectionView (DPKit)
 
 
+- (void)deselectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated {
+    for (NSIndexPath *indexPath in indexPaths) {
+        [self deselectItemAtIndexPath:indexPath animated:animated];
+    }
+}
+
+- (NSArray *)cellsForItemsAtIndexPaths:(NSArray *)indexPaths {
+    NSMutableArray *ret = [[NSMutableArray alloc] init];
+    for (NSIndexPath *indexPath in indexPaths) {
+        UICollectionViewCell *cell = [self cellForItemAtIndexPath:indexPath];
+        [ret addObject:cell];
+    }
+
+    return ret;
+}
+
 - (NSIndexPath *)selectedIndexPath {
     NSArray *indexPaths = [self indexPathsForSelectedItems];
     return [indexPaths count] == 1 ? indexPaths[0] : nil;

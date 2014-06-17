@@ -12,9 +12,10 @@
     for (int j = 0; j < [self count]; j++) {
         NSIndexPath *indexPath = self[j];
         if ([selectedIndexPath compare:indexPath] == NSOrderedSame) {
-
+            return YES;
         }
     }
+    return NO;
 
 }
 @end
