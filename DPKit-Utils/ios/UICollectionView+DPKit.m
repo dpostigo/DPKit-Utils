@@ -19,7 +19,9 @@
     NSMutableArray *ret = [[NSMutableArray alloc] init];
     for (NSIndexPath *indexPath in indexPaths) {
         UICollectionViewCell *cell = [self cellForItemAtIndexPath:indexPath];
-        [ret addObject:cell];
+        if (cell) {
+            [ret addObject:cell];
+        }
     }
 
     return ret;
