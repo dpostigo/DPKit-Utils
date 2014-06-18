@@ -11,4 +11,5 @@
 - (NSString *) capitalizedSentence;
 - (NSString *) decapitalize;
 - (NSString *) filenameEscapedString;
+- (NSString *)firstWord;
 @end

@@ -6,9 +6,13 @@
 
 @implementation UIView (DPKitDebug)
 
-- (void) addDebugBorder: (UIColor *) color {
+- (void)addDebugBorder:(UIColor *)color {
     self.layer.borderWidth = 1.0;
     self.layer.borderColor = color.CGColor;
+}
+
+- (void)removeDebugBorder {
+    self.layer.borderWidth = 0.0;
 }
 
 
