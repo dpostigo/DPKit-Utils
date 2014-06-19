@@ -6,6 +6,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (DPKitAnimations)
+
 - (void) fadeIn: (CGFloat) alphaIn withDuration: (CGFloat) durationIn toAlpha: (CGFloat) alphaOut withDuration: (CGFloat) durationOut;
 - (void) animateIn: (void (^)()) animationIn withDuration: (CGFloat) durationIn animationOut: (void (^)()) animationOut withDuration: (CGFloat) durationOut;
 @end

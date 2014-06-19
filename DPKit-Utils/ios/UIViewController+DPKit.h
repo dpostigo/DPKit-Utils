@@ -5,7 +5,8 @@
 #import <Foundation/Foundation.h>
 
 @interface UIViewController (DPKit)
-- (void (^)())constraintAnimationBlock;
-- (void)registerKeyboardWillShow:(SEL)selector;
+
+- (void (^)()) constraintAnimationBlock;
+- (void) registerKeyboardWillShow: (SEL) selector;
 - (void) embedFullscreenController: (UIViewController *) controller;
 @end

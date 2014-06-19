@@ -5,5 +5,6 @@
 #import <Foundation/Foundation.h>
 
 @interface UILabel (DPKit)
+
 - (void) setKerning: (CGFloat) kerningSize;
 @end

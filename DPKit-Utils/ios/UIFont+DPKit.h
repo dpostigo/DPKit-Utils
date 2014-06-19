@@ -6,6 +6,6 @@
 
 @interface UIFont (DPKit)
 
-+ (void)printFontNames;
-+ (CGFloat)kerningValueForSize:(CGFloat)pointSize;
++ (void) printFontNames;
++ (CGFloat) kerningValueForSize: (CGFloat) pointSize;
 @end

@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSNotification (DPKit)
-- (CGFloat)keyboardHeight;
-- (NSTimeInterval)keyboardDuration;
+
+- (CGFloat) keyboardHeight;
+- (NSTimeInterval) keyboardDuration;
 @end

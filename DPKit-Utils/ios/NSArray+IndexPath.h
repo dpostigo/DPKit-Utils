@@ -5,5 +5,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSArray (IndexPath)
-- (BOOL)containsIndexPath:(NSIndexPath *)selectedIndexPath;
+
+- (BOOL) containsIndexPath: (NSIndexPath *) selectedIndexPath;
 @end

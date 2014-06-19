@@ -7,8 +7,8 @@
 
 @interface NSMutableAttributedString (DPKit)
 
-- (void)addAttribute:(NSString *)name value:(id)value;
-- (UIFont *)fontValue;
+- (void) addAttribute: (NSString *) name value: (id) value;
+- (UIFont *) fontValue;
 @property(nonatomic) CGFloat kerning;
 
 

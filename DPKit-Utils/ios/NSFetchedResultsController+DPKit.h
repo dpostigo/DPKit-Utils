@@ -6,5 +6,6 @@
 #import <CoreData/CoreData.h>
 
 @interface NSFetchedResultsController (DPKit)
-- (NSArray *)indexPathsForObjects:(NSArray *)objects;
+
+- (NSArray *) indexPathsForObjects: (NSArray *) objects;
 @end

@@ -7,5 +7,5 @@
 @interface UIView (DPKitDebug)
 
 - (void) addDebugBorder: (UIColor *) color;
-- (void)removeDebugBorder;
+- (void) removeDebugBorder;
 @end
