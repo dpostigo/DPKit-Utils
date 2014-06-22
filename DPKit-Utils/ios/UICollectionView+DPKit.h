@@ -9,7 +9,11 @@
 @property(nonatomic) CGFloat flowLayoutWidth;
 @property(nonatomic) CGFloat flowLayoutHeight;
 @property(nonatomic) CGSize flowLayoutSize;
+- (void)deselectItems:(BOOL)animated;
 - (void) deselectItemsAtIndexPaths: (NSArray *) indexPaths animated: (BOOL) animated;
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths;
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated;
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated scrollPosition:(UICollectionViewScrollPosition)scrollPosition;
 - (NSArray *) cellsForItemsAtIndexPaths: (NSArray *) indexPaths;
 - (NSIndexPath *) selectedIndexPath;
 - (void) reloadDataSelectingIndexPath: (NSIndexPath *) indexPath;

@@ -9,9 +9,28 @@
 @implementation UICollectionView (DPKit)
 
 
+- (void)deselectItems:(BOOL)animated {
+    [self deselectItemsAtIndexPaths:[self indexPathsForSelectedItems] animated:animated];
+}
+
 - (void)deselectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated {
     for (NSIndexPath *indexPath in indexPaths) {
         [self deselectItemAtIndexPath:indexPath animated:animated];
+    }
+}
+
+
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths {
+    [self selectItemsAtIndexPaths:indexPaths animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+}
+
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated {
+    [self selectItemsAtIndexPaths:indexPaths animated:animated scrollPosition:UICollectionViewScrollPositionNone];
+}
+
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated scrollPosition:(UICollectionViewScrollPosition)scrollPosition {
+    for (NSIndexPath *indexPath in indexPaths) {
+        [self selectItemAtIndexPath:indexPath animated:animated scrollPosition:scrollPosition];
     }
 }
 
