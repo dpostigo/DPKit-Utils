@@ -9,6 +9,8 @@
 @property(nonatomic) CGFloat flowLayoutWidth;
 @property(nonatomic) CGFloat flowLayoutHeight;
 @property(nonatomic) CGSize flowLayoutSize;
+- (void)selectDefaultItemsAtIndexPaths:(NSArray *)indexPaths;
+- (void)selectDefaultItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)deselectItems:(BOOL)animated;
 - (void) deselectItemsAtIndexPaths: (NSArray *) indexPaths animated: (BOOL) animated;
 - (void)selectItemsAtIndexPaths:(NSArray *)indexPaths;

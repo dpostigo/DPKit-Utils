@@ -8,13 +8,69 @@
 
 #import <DPKit-Utils/UIView+DPKit.h>
 
+
 @implementation UIView (DPKit)
+
+
+
+#pragma mark - Embed
+
+
+- (void) embedController: (UIViewController *) controller {
+    UIView *view = controller.view;
+    [self embedView: view];
+}
+
+- (void) embedView: (UIView *) view {
+    view.frame = self.bounds;
+    [self addSubview: view];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [self addConstraints: @[
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeLeading relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeLeading multiplier: 1.0 constant: 0.0],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeTrailing relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeTrailing multiplier: 1.0 constant: 0.0],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeTop relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeTop multiplier: 1.0 constant: 0.0],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeBottom relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeBottom multiplier: 1.0 constant: 0.0]
+    ]];
+}
+
+- (void) embedView: (UIView *) view withInsets: (UIEdgeInsets) insets {
+    view.frame = self.bounds;
+    [self addSubview: view];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [self addConstraints: @[
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeLeading relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeLeading multiplier: 1.0 constant: insets.left],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeTrailing relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeTrailing multiplier: 1.0 constant: -insets.right],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeTop relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeTop multiplier: 1.0 constant: insets.top],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeBottom relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeBottom multiplier: 1.0 constant: -insets.bottom]
+    ]];
+}
+
+
+- (NSArray *) constrainView: (UIView *) view {
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+
+    UIEdgeInsets insets = UIEdgeInsetsMake(view.top, view.left, view.bottom, view.right);
+
+    NSArray *constraints = @[
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeLeading relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeLeading multiplier: 1.0 constant: insets.left],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeTrailing relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeTrailing multiplier: 1.0 constant: insets.right],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeTop relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeTop multiplier: 1.0 constant: insets.top],
+            [NSLayoutConstraint constraintWithItem: view attribute: NSLayoutAttributeBottom relatedBy: NSLayoutRelationEqual toItem: self attribute: NSLayoutAttributeBottom multiplier: 1.0 constant: insets.bottom]
+    ];
+
+    [self addConstraints: constraints];
+    return constraints;
+
+}
 
 + (UIView *) viewWithColor: (UIColor *) color {
     UIView *ret = [[UIView alloc] init];
     ret.backgroundColor = color;
     return ret;
 }
+
 
 - (void) prettify {
     [self prettifyWithBackgroundColor: [UIColor colorWithWhite: 0.98 alpha: 1.0] borderColor: [UIColor whiteColor] shadowColor: [UIColor blackColor]];

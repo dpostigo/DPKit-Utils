@@ -9,32 +9,70 @@
 @implementation UICollectionView (DPKit)
 
 
-- (void)deselectItems:(BOOL)animated {
+- (void)selectDefaultItemsAtIndexPaths:(NSArray *)indexPaths
+{
+    if ([self.indexPathsForSelectedItems count] == 0) {
+
+        for (int j = 0; j < [indexPaths count]; j++) {
+            NSIndexPath *indexPath = indexPaths[j];
+            [self selectItemAtIndexPath:indexPath
+                               animated:YES
+                         scrollPosition:UICollectionViewScrollPositionNone];
+
+            if (self.delegate && [self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+                [self.delegate collectionView:self didSelectItemAtIndexPath:indexPath];
+            }
+        }
+    }
+}
+
+
+- (void)selectDefaultItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.indexPathsForSelectedItems count] == 0) {
+        [self selectItemAtIndexPath:indexPath
+                           animated:YES
+                     scrollPosition:UICollectionViewScrollPositionNone];
+
+        if (self.delegate && [self.delegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+            [self.delegate collectionView:self didSelectItemAtIndexPath:indexPath];
+        }
+
+    }
+}
+
+- (void)deselectItems:(BOOL)animated
+{
     [self deselectItemsAtIndexPaths:[self indexPathsForSelectedItems] animated:animated];
 }
 
-- (void)deselectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated {
+- (void)deselectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated
+{
     for (NSIndexPath *indexPath in indexPaths) {
         [self deselectItemAtIndexPath:indexPath animated:animated];
     }
 }
 
 
-- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths {
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths
+{
     [self selectItemsAtIndexPaths:indexPaths animated:NO scrollPosition:UICollectionViewScrollPositionNone];
 }
 
-- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated {
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated
+{
     [self selectItemsAtIndexPaths:indexPaths animated:animated scrollPosition:UICollectionViewScrollPositionNone];
 }
 
-- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated scrollPosition:(UICollectionViewScrollPosition)scrollPosition {
+- (void)selectItemsAtIndexPaths:(NSArray *)indexPaths animated:(BOOL)animated scrollPosition:(UICollectionViewScrollPosition)scrollPosition
+{
     for (NSIndexPath *indexPath in indexPaths) {
         [self selectItemAtIndexPath:indexPath animated:animated scrollPosition:scrollPosition];
     }
 }
 
-- (NSArray *)cellsForItemsAtIndexPaths:(NSArray *)indexPaths {
+- (NSArray *)cellsForItemsAtIndexPaths:(NSArray *)indexPaths
+{
     NSMutableArray *ret = [[NSMutableArray alloc] init];
     NSArray *paths = [NSArray arrayWithArray:indexPaths];
     for (NSIndexPath *indexPath in paths) {
@@ -51,12 +89,14 @@
     return ret;
 }
 
-- (NSIndexPath *)selectedIndexPath {
+- (NSIndexPath *)selectedIndexPath
+{
     NSArray *indexPaths = [self indexPathsForSelectedItems];
     return [indexPaths count] == 1 ? indexPaths[0] : nil;
 }
 
-- (void)reloadDataSelectingIndexPath:(NSIndexPath *)indexPath {
+- (void)reloadDataSelectingIndexPath:(NSIndexPath *)indexPath
+{
     if (indexPath) {
         [self performBatchUpdates:^{
             [self reloadItemsAtIndexPaths:[self indexPathsForVisibleItems]];
@@ -75,7 +115,8 @@
 }
 
 
-- (void)reloadDataSelectingIndexPaths:(NSArray *)indexPaths {
+- (void)reloadDataSelectingIndexPaths:(NSArray *)indexPaths
+{
     if (indexPaths && [indexPaths count] > 0) {
         [self performBatchUpdates:^{
 
@@ -98,7 +139,8 @@
 }
 
 
-- (UICollectionViewFlowLayout *)flowLayoutCopy {
+- (UICollectionViewFlowLayout *)flowLayoutCopy
+{
     UICollectionViewFlowLayout *currentLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     UICollectionViewFlowLayout *ret = [[UICollectionViewFlowLayout alloc] init];
     ret.itemSize = currentLayout.itemSize;
@@ -111,37 +153,43 @@
     return ret;
 }
 
-- (void)setFlowLayoutSize:(CGSize)size {
+- (void)setFlowLayoutSize:(CGSize)size
+{
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(size.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right, size.height - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom);
     self.collectionViewLayout = flowLayout;
 }
 
-- (CGSize)flowLayoutSize {
+- (CGSize)flowLayoutSize
+{
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     return flowLayout.itemSize;
 }
 
 
-- (void)setFlowLayoutHeight:(CGFloat)aHeight {
+- (void)setFlowLayoutHeight:(CGFloat)aHeight
+{
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(flowLayout.itemSize.width, aHeight - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom);
     self.collectionViewLayout = flowLayout;
 }
 
-- (CGFloat)flowLayoutHeight {
+- (CGFloat)flowLayoutHeight
+{
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     return flowLayout.itemSize.height;
 }
 
 
-- (void)setFlowLayoutWidth:(CGFloat)width {
+- (void)setFlowLayoutWidth:(CGFloat)width
+{
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(width - flowLayout.sectionInset.left - flowLayout.sectionInset.right, flowLayout.itemSize.height);
     self.collectionViewLayout = flowLayout;
 }
 
-- (CGFloat)flowLayoutWidth {
+- (CGFloat)flowLayoutWidth
+{
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *) self.collectionViewLayout;
     return flowLayout.itemSize.width;
 }

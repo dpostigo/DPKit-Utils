@@ -29,6 +29,10 @@
 @property(nonatomic) CGSize size;
 
 
+- (void) embedController: (UIViewController *) controller;
+- (void) embedView: (UIView *) view;
+- (void) embedView: (UIView *) view withInsets: (UIEdgeInsets) insets;
+- (NSArray *) constrainView: (UIView *) view;
 + (UIView *) viewWithColor: (UIColor *) color;
 - (void) prettify;
 - (void) prettifyWithBackgroundColor: (UIColor *) bgColor;
