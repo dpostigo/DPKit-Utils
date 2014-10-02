@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
 
   s.dependency  'JMSimpleDate'
-  s.frameworks   = 'Foundation', 'QuartzCore', 'UIKit', 'CoreGraphics'
+  s.frameworks   = 'Foundation', 'QuartzCore', 'CoreGraphics'
   s.ios.frameworks   = 'Foundation', 'QuartzCore', 'UIKit', 'CoreGraphics'
 
 
